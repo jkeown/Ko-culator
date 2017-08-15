@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ko-culator</title>
-    <link rel="icon" type="" href="">
-    <style>
-    	body {
-    		background-color: lightblue;
-    		text-align: center;
-    	}
-    	button {
-    		margin: 50px 0 25px;
-    	}
-    </style>
-  </head>
+
+<head>
+  <style media="screen">
+    body {
+      background-color: lightblue;
+      text-align: center;
+    }
+
+    button {
+      margin: 50px 0 25px;
+    }
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ko-culator</title>
+</head>
+
 <body>
-	<div>	
-		<h3>Welcome to the<h1>Ko-culator</h1></h3>
-	</div>
-	<div>	
-		<p>Enter last fill / pick up date:</p>
-		<input type="text" id="lastFillDate" placeholder="1-1-17" style="text-align: center">
-		<p>Enter day supply:</p>
-		<input type="text" id="daySupply" placeholder="60" style="text-align: center">
-	</div>
-	<div>
-		<button onClick="getNextFill()">Next Fill Date</button>
-	</div>
-	<div>
-		<p class="date-due"></p>
-	</div>
+  <div>
+    <h3>Welcome to the</h3>
+    <h1>Ko-culator</h1>
+  </div>
+  <div>
+    <p>Enter last fill / pick up date:</p>
+    <input type="text" id="lastFillDate" placeholder="1-1-17" style="text-align: center" required>
+    <p>Enter day supply:</p>
+    <input type="text" id="daySupply" placeholder="60" style="text-align: center" required>
+  </div>
+  <div>
+    <button onClick="getNextFill()">Next Fill Date</button>
+  </div>
+  <div>
+    <p class="date-due"></p>
+  </div>
 
-<script>
-function getNextFill(){
-	const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-	let lastFillDate = new Date(document.querySelector('#lastFillDate').value);
-	let daySupply = document. querySelector('#daySupply').value;
-	let dayOfMonth = lastFillDate.getDate();
-	lastFillDate.setDate(dayOfMonth + Number.parseInt(daySupply));
-	let nextFillDate = days[lastFillDate.getDay()] + " " + (lastFillDate.getMonth()+1) + "-" + lastFillDate.getDate() + "-" + lastFillDate.getFullYear();
+  <script>
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
-	document.querySelector('.date-due').innerHTML = 'Next fill is due on: <br/><br/>' + nextFillDate;
-};
-// let lastFillDate = new Date('8/8/2017');
-// let dayOfMonth = lastFillDate.getDate();
-// lastFillDate.setDate(dayOfMonth+61);
+    function getNextFill() {
+      const lastFillDate = new Date(document.querySelector('#lastFillDate').value);
+      const dayOfMonth = lastFillDate.getDate();
+      const daySupply = document.querySelector('#daySupply').value;
+      lastFillDate.setDate(dayOfMonth + Number.parseInt(daySupply));
+      const nextFillDate = days[lastFillDate.getDay()] + " " + (lastFillDate.getMonth() + 1) + "-" + lastFillDate.getDate() + "-" + lastFillDate.getFullYear();
 
-// document.querySelector('.date-due').innerHTML = lastFillDate;
-	
-</script>
+      document.querySelector('.date-due').innerHTML = nextFillDate.startsWith('undefined') ? 'You must enter the required information' : 'Next fill is due on: <br/><br/>' + nextFillDate;
+    };
 
+    document.querySelector('input').addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) {
+        getNextFill()
+      }
+    });
+  </script>
 </body>
+
 </html>
