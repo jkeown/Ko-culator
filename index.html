@@ -36,7 +36,8 @@
 
 function getNextFill(){
 	const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-	const lastFillDate = new Date(document.querySelector('#lastFillDate').value);
+	//const lastFillDate = new Date(document.querySelector('#lastFillDate').value);
+	const lastFillDate = new Date(Date());
 	const daySupply = document. querySelector('#daySupply').value;
 	const dayOfMonth = lastFillDate.getDate();
 	lastFillDate.setDate(dayOfMonth + Number.parseInt(daySupply));
