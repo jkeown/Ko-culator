@@ -21,12 +21,12 @@
 	</div>
 	<div>	
 		<p>Enter last fill / pick up date:</p>
-		<input type="text" id="lastFillDate" placeholder="1-1-17" style="text-align: center">
+		<input type="text" id="lastFillDate" placeholder="1-1-17" style="text-align: center" required>
 		<p>Enter day supply:</p>
-		<input type="text" id="daySupply" placeholder="60" style="text-align: center">
+		<input type="text" id="daySupply" placeholder="60" style="text-align: center" required>
 	</div>
 	<div>
-		<button onClick="getNextFill()">Next Fill Date</button>
+		<button type="submit" onClick="getNextFill()">Next Fill Date</button>
 	</div>
 	<div>
 		<p class="date-due"></p>
