@@ -1,58 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ko-culator</title>
-    <style>
-    	body {
-    		background-color: lightblue;
-    		text-align: center;
-    	}
-    	button {
-    		margin: 50px 0 25px;
-    	}
-    </style>
-  </head>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ko-culator</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-	<div>	
-		<h3>Welcome to the</h3>
-		<h1>Ko-culator</h1>
+	<header>
+		<h1>Next Fill Friend</h1>
+	</header>
+	<div class="wrap">
+		<section>
+			<div>
+				<p>Last pick up date:</p>
+				<input type="date" id="lastFillDate" placeholder="YYYY-MM-DD" style="text-align: center">
+			</div>
+			<div>
+				<p>Day supply:</p>
+				<input type="number" id="daySupply" placeholder="30, 60, etc" style="text-align: center">
+			</div>
+		</section>
+		<section>
+			<button type="submit" onClick="getNextFill()">Get Next Fill</button>
+		</section>
 	</div>
-	<div>	
-		<p>Enter last fill / pick up date:</p>
-		<input type="date" id="lastFillDate" placeholder="YYYY-MM-DD" style="text-align: center" >
-		<p>Enter day supply:</p>
-		<input type="number" id="daySupply" placeholder="30, 60, etc" style="text-align: center" >
-	</div>
-	<div>
-		<button type="submit" onClick="getNextFill()">Next Fill Date</button>
-	</div>
-	<div>
+	<section>
 		<p class="date-due"></p>
-	</div>
+	</section>
 
-<script>
-
-function getNextFill(){
-	const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-	const lastFillDate = new Date(document.querySelector('#lastFillDate').value);
-	
-	const daySupply = document. querySelector('#daySupply').value;
-	const dayOfMonth = lastFillDate.getDate();
-	lastFillDate.setDate(dayOfMonth + Number.parseInt(daySupply));
-	const nextFillDate = days[lastFillDate.getDay()] + " " + (lastFillDate.getMonth()+1) + "-" + lastFillDate.getDate() + "-" + lastFillDate.getFullYear();
-
-
-	document.querySelector('.date-due').innerHTML = 'Next fill is due on: <br/><br/>' + nextFillDate;
-};
-// let lastFillDate = new Date('8/8/2017');
-// let dayOfMonth = lastFillDate.getDate();
-// lastFillDate.setDate(dayOfMonth+61);
-
-// document.querySelector('.date-due').innerHTML = lastFillDate;
-	
-</script>
+	<script src="app.js"></script>
 
 </body>
+
 </html>
