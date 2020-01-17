@@ -8,7 +8,7 @@ function getNextFill(){
 	const nextFillDate = days[lastFillDate.getDay()] + " " + (lastFillDate.getMonth()+1) + "-" + lastFillDate.getDate() + "-" + lastFillDate.getFullYear();
 
 
-	document.querySelector('.date-due').innerHTML = 'Next fill is due on: <br/><br/>' + nextFillDate;
+	document.querySelector('.date-due').innerHTML = `Next fill due: <span>${nextFillDate}</span>`;
 };
 // let lastFillDate = new Date('8/8/2017');
 // let dayOfMonth = lastFillDate.getDate();
