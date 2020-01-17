@@ -69,7 +69,7 @@ input:focus, button:focus{
 .date-due{
   font-size: 1.5rem;
   margin-top: 25px;
-  padding: 10px;
+  line-height: 2rem;
 }
 .date-due span{
   color: var(--porcelain);
